@@ -24,6 +24,17 @@ module Poker
       return true if straight? && flush?
     end
 
+    def four_of_a_kind?
+      counts = Hash.new(0)
+      card_rankings.each { |rank| counts[rank] += 1 }
+
+      counts.values.any? { |count| count == 4 }
+    end
+
+    def flush?
+      card_suits.uniq.length == 1
+    end
+
     def straight?
       # Can't be a straight unless all cards are different ranks
       return false unless card_rankings.uniq.count == 5
@@ -35,10 +46,6 @@ module Poker
       # Since these are unique and sorted, if the difference between
       # largest and smallest is 4, then these are consecutive cards
       largest - smallest == 4
-    end
-
-    def flush?
-      card_suits.uniq.length == 1
     end
 
     def card_rankings
@@ -56,6 +63,12 @@ module Poker
     end
   end
 
+  class FourOfAKind < Hand
+    def valid?
+      four_of_a_kind?
+    end
+  end
+
   class Flush < Hand
     def valid?
       flush?
@@ -70,6 +83,7 @@ module Poker
 
   RANKED_HANDS = [
     StraightFlush,
+    FourOfAKind,
     Flush,
     Straight
   ]

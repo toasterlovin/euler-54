@@ -9,6 +9,13 @@ class PokerTest < Minitest::Test
     assert_instance_of Poker::Straight, straight
   end
 
+  def test_identifies_four_of_a_kind
+    not_four_of_a_kind = Poker::HandFactory.hand('2S 2H 2D 3C 4S')
+    refute_instance_of Poker::FourOfAKind, not_four_of_a_kind
+    four_of_a_kind = Poker::HandFactory.hand('2S 2H 2D 2C 3S')
+    assert_instance_of Poker::FourOfAKind, four_of_a_kind
+  end
+
   def test_identifies_flush
     not_flush = Poker::HandFactory.hand('2H 3H 4H 5H 6C')
     refute_instance_of Poker::Flush, not_flush
