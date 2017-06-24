@@ -62,6 +62,16 @@ module Poker
       counts.values.any? { |count| count == 3 }
     end
 
+    def two_pair?
+      counts = Hash.new(0)
+      ranks.each { |rank| counts[rank] += 1 }
+
+      counts
+        .values
+        .select { |count| count == 2 }
+        .count == 2
+    end
+
     def ranks
       @cards.map(&:rank)
     end
@@ -107,6 +117,12 @@ module Poker
     end
   end
 
+  class TwoPair < Hand
+    def valid?
+      two_pair?
+    end
+  end
+
   RANKED_HANDS = [
     StraightFlush,
     FourOfAKind,
@@ -114,5 +130,6 @@ module Poker
     Flush,
     Straight,
     ThreeOfAKind,
+    TwoPair
   ]
 end
