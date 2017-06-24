@@ -55,6 +55,13 @@ module Poker
       largest - smallest == 4
     end
 
+    def three_of_a_kind?
+      counts = Hash.new(0)
+      ranks.each { |rank| counts[rank] += 1 }
+
+      counts.values.any? { |count| count == 3 }
+    end
+
     def ranks
       @cards.map(&:rank)
     end
@@ -94,11 +101,18 @@ module Poker
     end
   end
 
+  class ThreeOfAKind < Hand
+    def valid?
+      three_of_a_kind?
+    end
+  end
+
   RANKED_HANDS = [
     StraightFlush,
     FourOfAKind,
     FullHouse,
     Flush,
-    Straight
+    Straight,
+    ThreeOfAKind,
   ]
 end

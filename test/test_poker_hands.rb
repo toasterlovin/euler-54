@@ -40,7 +40,10 @@ class PokerTest < Minitest::Test
   end
 
   def test_identifies_three_of_a_kind
-    flunk
+    not_three_of_a_kind = Poker::HandFactory.hand('2S 2H 2D 3C 3S')
+    refute_instance_of Poker::ThreeOfAKind, not_three_of_a_kind
+    three_of_a_kind = Poker::HandFactory.hand('2S 2H 2D 3C 4S')
+    assert_instance_of Poker::ThreeOfAKind, three_of_a_kind
   end
 
   def test_identifies_two_pair
