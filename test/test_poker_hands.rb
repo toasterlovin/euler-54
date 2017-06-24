@@ -2,11 +2,13 @@ require 'minitest/autorun'
 require 'poker'
 
 class PokerTest < Minitest::Test
-  def test_dentifies_straight_flushes
-    not_straight = Poker::HandFactory.hand('2S 3H 4D 5C 5S')
-    refute_instance_of Poker::Straight, not_straight
-    straight = Poker::HandFactory.hand('2S 3H 4D 5C 6S')
-    assert_instance_of Poker::Straight, straight
+  def test_dentifies_straight_flush
+    flush = Poker::HandFactory.hand('2H 3H 4H 5H 7H')
+    refute_instance_of Poker::StraightFlush, flush
+    straight = Poker::HandFactory.hand('2H 3H 4H 5H 6S')
+    refute_instance_of Poker::StraightFlush, straight
+    straight_flush = Poker::HandFactory.hand('2H 3H 4H 5H 6H')
+    assert_instance_of Poker::StraightFlush, straight_flush
   end
 
   def test_identifies_four_of_a_kind
@@ -31,12 +33,10 @@ class PokerTest < Minitest::Test
   end
 
   def test_identifies_straight
-    flush = Poker::HandFactory.hand('2H 3H 4H 5H 7H')
-    refute_instance_of Poker::StraightFlush, flush
-    straight = Poker::HandFactory.hand('2H 3H 4H 5H 6S')
-    refute_instance_of Poker::StraightFlush, straight
-    straight_flush = Poker::HandFactory.hand('2H 3H 4H 5H 6H')
-    assert_instance_of Poker::StraightFlush, straight_flush
+    not_straight = Poker::HandFactory.hand('2S 3H 4D 5C 5S')
+    refute_instance_of Poker::Straight, not_straight
+    straight = Poker::HandFactory.hand('2S 3H 4D 5C 6S')
+    assert_instance_of Poker::Straight, straight
   end
 
   def test_identifies_three_of_a_kind
