@@ -26,12 +26,14 @@ module Poker
     end
 
     def straight?
-      false
-      # return unless card_rankings.uniq.count == 5
+      return false unless card_rankings.uniq.count == 5
 
-      # sorted_cards = card_rankings.sort
-      # largest = sorted_cards.first
-      # smallest = sorted_cards.first
+      sorted_cards = card_rankings.sort
+      puts "Sorted Cards: #{sorted_cards}"
+      smallest = sorted_cards.first
+      largest = sorted_cards.last
+
+      largest - smallest == 4
     end
 
     def flush?
@@ -59,7 +61,14 @@ module Poker
     end
   end
 
+  class Straight < Hand
+    def valid?
+      straight?
+    end
+  end
+
   RANKED_HANDS = [
-    Flush
+    Flush,
+    Straight
   ]
 end
