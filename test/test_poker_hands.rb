@@ -16,6 +16,13 @@ class PokerTest < Minitest::Test
     assert_instance_of Poker::FourOfAKind, four_of_a_kind
   end
 
+  def test_identifies_full_house
+    not_full_house = Poker::HandFactory.hand('2S 2H 3D 3C 4S')
+    refute_instance_of Poker::FullHouse, not_full_house
+    full_house = Poker::HandFactory.hand('2S 2H 2D 3C 3S')
+    assert_instance_of Poker::FullHouse, full_house
+  end
+
   def test_identifies_flush
     not_flush = Poker::HandFactory.hand('2H 3H 4H 5H 6C')
     refute_instance_of Poker::Flush, not_flush

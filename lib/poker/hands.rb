@@ -31,6 +31,13 @@ module Poker
       counts.values.any? { |count| count == 4 }
     end
 
+    def full_house?
+      counts = Hash.new(0)
+      ranks.each { |rank| counts[rank] += 1 }
+
+      counts.values.include?(3) && counts.values.include?(2)
+    end
+
     def flush?
       suits.uniq.length == 1
     end
@@ -69,6 +76,12 @@ module Poker
     end
   end
 
+  class FullHouse < Hand
+    def valid?
+      full_house?
+    end
+  end
+
   class Flush < Hand
     def valid?
       flush?
@@ -84,6 +97,7 @@ module Poker
   RANKED_HANDS = [
     StraightFlush,
     FourOfAKind,
+    FullHouse,
     Flush,
     Straight
   ]
