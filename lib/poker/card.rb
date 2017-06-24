@@ -1,5 +1,5 @@
 module Poker
-  RANKINGS = {
+  RANKS = {
     '2' => 2,
     '3' => 3,
     '4' => 4,
@@ -22,11 +22,11 @@ module Poker
   }
 
   class Card
-    attr_reader :value, :ranking, :suit
+    attr_reader :value, :rank, :suit
 
     def initialize(card)
       @value = card
-      @ranking = RANKINGS[card[0]]
+      @rank = RANKS[card[0]]
       @suit = SUITS[card[1]]
     end
   end

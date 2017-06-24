@@ -26,7 +26,7 @@ module Poker
 
     def four_of_a_kind?
       counts = Hash.new(0)
-      card_rankings.each { |rank| counts[rank] += 1 }
+      ranks.each { |rank| counts[rank] += 1 }
 
       counts.values.any? { |count| count == 4 }
     end
@@ -37,9 +37,9 @@ module Poker
 
     def straight?
       # Can't be a straight unless all cards are different ranks
-      return false unless card_rankings.uniq.count == 5
+      return false unless ranks.uniq.count == 5
 
-      sorted_cards = card_rankings.sort
+      sorted_cards = ranks.sort
       smallest = sorted_cards.first
       largest = sorted_cards.last
 
@@ -48,8 +48,8 @@ module Poker
       largest - smallest == 4
     end
 
-    def card_rankings
-      @cards.map(&:ranking)
+    def ranks
+      @cards.map(&:rank)
     end
 
     def card_suits
