@@ -32,7 +32,7 @@ module Poker
     end
 
     def flush?
-      card_suits.uniq.length == 1
+      suits.uniq.length == 1
     end
 
     def straight?
@@ -52,7 +52,7 @@ module Poker
       @cards.map(&:rank)
     end
 
-    def card_suits
+    def suits
       @cards.map(&:suit)
     end
   end
