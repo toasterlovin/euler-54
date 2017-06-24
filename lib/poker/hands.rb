@@ -21,18 +21,19 @@ module Poker
     end
 
     def straight_flush?
-      false
-      # return true if straight? && flush?
+      return true if straight? && flush?
     end
 
     def straight?
+      # Can't be a straight unless all cards are different ranks
       return false unless card_rankings.uniq.count == 5
 
       sorted_cards = card_rankings.sort
-      puts "Sorted Cards: #{sorted_cards}"
       smallest = sorted_cards.first
       largest = sorted_cards.last
 
+      # Since these are unique and sorted, if the difference between
+      # largest and smallest is 4, then these are consecutive cards
       largest - smallest == 4
     end
 
@@ -68,6 +69,7 @@ module Poker
   end
 
   RANKED_HANDS = [
+    StraightFlush,
     Flush,
     Straight
   ]
