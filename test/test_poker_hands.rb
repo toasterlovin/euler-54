@@ -39,6 +39,22 @@ class PokerTest < Minitest::Test
     assert_instance_of Poker::StraightFlush, straight_flush
   end
 
+  def test_identifies_three_of_a_kind
+    flunk
+  end
+
+  def test_identifies_two_pair
+    flunk
+  end
+
+  def test_identifies_one_pair
+    flunk
+  end
+
+  def test_identifies_high_card
+    flunk
+  end
+
   def test_straight_flush_vs_four_of_kind
     flunk
   end
