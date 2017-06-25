@@ -32,6 +32,10 @@ module Poker
       @cards.map(&:suit)
     end
 
+    def descending_ranks
+      ranks.sort.reverse
+    end
+
     private
 
     def rank_counts

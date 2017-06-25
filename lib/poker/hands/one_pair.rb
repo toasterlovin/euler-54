@@ -17,10 +17,7 @@ module Poker
     end
 
     def ranked_extra_cards
-      ranks
-        .reject { |rank| rank == pair_rank }
-        .sort
-        .reverse
+      descending_ranks.reject { |rank| rank == pair_rank }
     end
 
     def valid?

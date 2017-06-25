@@ -3,7 +3,7 @@ module Poker
     def <=>(other)
       return super unless super == 0
 
-      ranks.sort.reverse <=> other.ranks.sort.reverse
+      descending_ranks <=> other.descending_ranks
     end
 
     def valid?
