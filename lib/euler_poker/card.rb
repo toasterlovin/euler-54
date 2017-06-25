@@ -11,7 +11,8 @@ module EulerPoker
     'T' => 10,
     'J' => 11,
     'Q' => 12,
-    'K' => 13
+    'K' => 13,
+    'A' => 14
   }
 
   SUITS = {
