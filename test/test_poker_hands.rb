@@ -54,7 +54,10 @@ class PokerTest < Minitest::Test
   end
 
   def test_identifies_one_pair
-    flunk
+    not_one_pair = Poker::HandFactory.hand('2S 3H 4D 5C 7S')
+    refute_instance_of Poker::OnePair, not_one_pair
+    one_pair = Poker::HandFactory.hand('2S 2H 3D 4C 5S')
+    assert_instance_of Poker::OnePair, one_pair
   end
 
   def test_identifies_high_card
