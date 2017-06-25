@@ -6,3 +6,4 @@ Todo
 - Implement file processor
 - Implement hand validation
 - Refactor
+  - Revisit Hand#SUITS
