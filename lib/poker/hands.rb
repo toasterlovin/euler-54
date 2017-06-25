@@ -25,17 +25,11 @@ module Poker
     end
 
     def four_of_a_kind?
-      counts = Hash.new(0)
-      ranks.each { |rank| counts[rank] += 1 }
-
-      counts.values.any? { |count| count == 4 }
+      rank_counts.values.any? { |count| count == 4 }
     end
 
     def full_house?
-      counts = Hash.new(0)
-      ranks.each { |rank| counts[rank] += 1 }
-
-      counts.values.include?(3) && counts.values.include?(2)
+      rank_counts.values.include?(3) && rank_counts.values.include?(2)
     end
 
     def flush?
@@ -56,31 +50,29 @@ module Poker
     end
 
     def three_of_a_kind?
-      counts = Hash.new(0)
-      ranks.each { |rank| counts[rank] += 1 }
-
-      counts.values.any? { |count| count == 3 }
+      rank_counts.values.any? { |count| count == 3 }
     end
 
     def two_pair?
-      counts = Hash.new(0)
-      ranks.each { |rank| counts[rank] += 1 }
-
-      counts
+      rank_counts
         .values
         .select { |count| count == 2 }
         .count == 2
     end
 
     def one_pair?
-      counts = Hash.new(0)
-      ranks.each { |rank| counts[rank] += 1 }
-
-      counts.values.any? { |count| count == 2 }
+      rank_counts.values.any? { |count| count == 2 }
     end
 
     def ranks
       @cards.map(&:rank)
+    end
+
+    def rank_counts
+      ranks.reduce(Hash.new(0)) do |counts, rank|
+        counts[rank] += 1
+        counts
+      end
     end
 
     def suits
