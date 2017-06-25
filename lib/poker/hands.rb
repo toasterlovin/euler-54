@@ -105,6 +105,19 @@ module Poker
   end
 
   class FourOfAKind < Hand
+    def <=>(other)
+      return super unless super == 0
+
+      this_rank  = rank_counts
+                     .find { |rank, count| count == 4 }
+                     .first
+      other_rank = other.rank_counts
+                     .find { |rank, count| count == 4 }
+                     .first
+
+      return this_rank <=> other_rank
+    end
+
     def valid?
       four_of_a_kind?
     end
