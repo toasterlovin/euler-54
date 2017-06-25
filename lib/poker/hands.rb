@@ -8,6 +8,8 @@ module Poker
   end
 
   class Hand
+    include Comparable
+
     def self.parse_hand(hand)
       parse_cards(hand.split)
     end
@@ -20,12 +22,12 @@ module Poker
       @cards = cards
     end
 
-    def >(other)
-      hand_ranking < other.hand_ranking
+    def <=>(other)
+      rank <=> other.rank
     end
 
-    def hand_ranking
-      RANKED_HANDS.index(self.class)
+    def rank
+      RANKED_HANDS.reverse.index(self.class)
     end
 
     def straight_flush?
