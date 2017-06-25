@@ -1,6 +1,6 @@
 Dir[File.dirname(__FILE__) + '/hands/*.rb'].each { |file| require file }
 
-module Poker
+module EulerPoker
   RANKED_HANDS = [
     StraightFlush,
     FourOfAKind,

@@ -1,4 +1,4 @@
-module Poker
+module EulerPoker
   RANKS = {
     '2' => 2,
     '3' => 3,

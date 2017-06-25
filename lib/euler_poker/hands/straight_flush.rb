@@ -1,5 +1,5 @@
-module Poker
-  class Straight < Hand
+module EulerPoker
+  class StraightFlush < Hand
     def <=>(other)
       return super unless super == 0
 
@@ -7,7 +7,7 @@ module Poker
     end
 
     def valid?
-      straight?
+      straight_flush?
     end
   end
 end

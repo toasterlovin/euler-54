@@ -1,4 +1,4 @@
-module Poker
+module EulerPoker
   class FourOfAKind < Hand
     def <=>(other)
       return super unless super == 0

@@ -1,5 +1,5 @@
 require 'minitest/autorun'
-require 'poker'
+require 'euler_poker'
 
 class HandValidationTest < Minitest::Test
   # def test_not_enough_cards

@@ -1,4 +1,4 @@
-module Poker
+module EulerPoker
   class Hand
     include Comparable
 

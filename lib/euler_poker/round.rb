@@ -1,4 +1,4 @@
-module Poker
+module EulerPoker
   class Round
     def initialize(round)
       @first, @second = HandFactory.round(round)

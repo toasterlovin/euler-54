@@ -1,5 +1,5 @@
-module Poker
-  class HighCard < Hand
+module EulerPoker
+  class Flush < Hand
     def <=>(other)
       return super unless super == 0
 
@@ -7,7 +7,7 @@ module Poker
     end
 
     def valid?
-      true
+      flush?
     end
   end
 end
