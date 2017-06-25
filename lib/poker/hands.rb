@@ -20,6 +20,14 @@ module Poker
       @cards = cards
     end
 
+    def >(other)
+      hand_ranking < other.hand_ranking
+    end
+
+    def hand_ranking
+      RANKED_HANDS.index(self.class)
+    end
+
     def straight_flush?
       return true if straight? && flush?
     end
