@@ -24,6 +24,23 @@ module Poker
       RANKED_HANDS.reverse.index(self.class)
     end
 
+    def ranks
+      @cards.map(&:rank)
+    end
+
+    def suits
+      @cards.map(&:suit)
+    end
+
+    private
+
+    def rank_counts
+      ranks.reduce(Hash.new(0)) do |counts, rank|
+        counts[rank] += 1
+        counts
+      end
+    end
+
     def straight_flush?
       return true if straight? && flush?
     end
@@ -66,21 +83,6 @@ module Poker
 
     def one_pair?
       rank_counts.values.any? { |count| count == 2 }
-    end
-
-    def ranks
-      @cards.map(&:rank)
-    end
-
-    def rank_counts
-      ranks.reduce(Hash.new(0)) do |counts, rank|
-        counts[rank] += 1
-        counts
-      end
-    end
-
-    def suits
-      @cards.map(&:suit)
     end
   end
 end
