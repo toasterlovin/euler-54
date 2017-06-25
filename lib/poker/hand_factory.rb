@@ -14,6 +14,13 @@ module Poker
   ]
 
   class HandFactory
+    def self.round(round)
+      cards = parse_cards(round)
+      first = build_hand(cards.first(5))
+      second = build_hand(cards.last(5))
+      [first, second]
+    end
+
     def self.hand(hand)
       cards = parse_cards(hand)
       build_hand(cards)
