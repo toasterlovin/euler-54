@@ -1,7 +1,7 @@
 require 'minitest/autorun'
 require 'poker'
 
-class PokerTest < Minitest::Test
+class HandIdentificationTest < Minitest::Test
   def test_dentifies_straight_flush
     flush = Poker::HandFactory.hand('2H 3H 4H 5H 7H')
     refute_instance_of Poker::StraightFlush, flush
@@ -73,24 +73,4 @@ class PokerTest < Minitest::Test
     high_card = Poker::HandFactory.hand('2S 3H 4D 5C 7S')
     assert_instance_of Poker::HighCard, high_card
   end
-
-  def test_straight_flush_vs_four_of_kind
-    flunk
-  end
-
-  # def test_not_enough_cards
-  #   flunk
-  # end
-
-  # def test_too_many_cards
-  #   flunk
-  # end
-
-  # def test_duplicate_cards
-  #   flunk
-  # end
-
-  # def test_invalid_cards
-  #   flunk
-  # end
 end
