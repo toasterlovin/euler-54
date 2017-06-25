@@ -2,16 +2,6 @@ module Poker
   class Hand
     include Comparable
 
-    def self.parse_hand(hand_string)
-      card_strings = hand_string.split
-      parse_cards(card_strings)
-    end
-
-    def self.parse_cards(card_strings)
-      cards = card_strings.map { |c| Card.new(c) }
-      new(cards)
-    end
-
     def initialize(cards)
       @cards = cards
     end
