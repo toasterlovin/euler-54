@@ -17,10 +17,10 @@ module Poker
     end
 
     def <=>(other)
-      rank <=> other.rank
+      ranking <=> other.ranking
     end
 
-    def rank
+    def ranking
       RANKED_HANDS.reverse.index(self.class)
     end
 
