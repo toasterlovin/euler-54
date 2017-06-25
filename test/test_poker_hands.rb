@@ -61,7 +61,8 @@ class PokerTest < Minitest::Test
   end
 
   def test_identifies_high_card
-    flunk
+    high_card = Poker::HandFactory.hand('2S 3H 4D 5C 7S')
+    assert_instance_of Poker::HighCard, high_card
   end
 
   def test_straight_flush_vs_four_of_kind

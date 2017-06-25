@@ -136,6 +136,12 @@ module Poker
     end
   end
 
+  class HighCard < Hand
+    def valid?
+      true
+    end
+  end
+
   RANKED_HANDS = [
     StraightFlush,
     FourOfAKind,
@@ -144,6 +150,7 @@ module Poker
     Straight,
     ThreeOfAKind,
     TwoPair,
-    OnePair
+    OnePair,
+    HighCard
   ]
 end
