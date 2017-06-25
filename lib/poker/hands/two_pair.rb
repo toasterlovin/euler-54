@@ -12,12 +12,6 @@ module Poker
       end
     end
 
-    def pair_ranks
-      rank_counts
-        .select { |rank, count| count == 2 }
-        .keys
-    end
-
     def high_pair_rank
       pair_ranks.max
     end
@@ -34,6 +28,14 @@ module Poker
 
     def valid?
       two_pair?
+    end
+
+    private
+
+    def pair_ranks
+      rank_counts
+        .select { |rank, count| count == 2 }
+        .keys
     end
   end
 end
