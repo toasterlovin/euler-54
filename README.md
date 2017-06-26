@@ -67,13 +67,13 @@ with `<` or `>`.
 ### Other Classes
 
 `EulerPoker::Hand` and it's subclasses comprise the core of this solution, but
-there are some other classes which provide support:
+there are some other supporting classes:
 
 - `EulerPoker::HandFactory` takes a string of text representing a hand of cards
   and instantiates the corresponding subclass of `EulerPoker::Hand`.
 - `EulerPoker::Card` represents a single card and is primarily concerned with
-  enabling comparison of a card's rank. This is mainly an issue because of face
-  cards, which need to be translated into a numeric ranking.
+  enabling comparison of two cards based on rank. This is mainly an issue
+  because of face cards.
 - `EulerPoker::Round` (as in a round of poker) represents a pair of hands which
   will be compared to determine the winner.
 - `EulerPoker::CLI` contains the logic for actually reading the contents of a
