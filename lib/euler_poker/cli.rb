@@ -21,7 +21,7 @@ module EulerPoker
       end
       @file.close
 
-      puts "First hand won #{results.count(:first)} out of #{hands} hands."
+      puts "Player 1 won #{results.count(:first)} out of #{hands} hands."
     end
   end
 end
