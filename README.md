@@ -2,8 +2,8 @@
 
 # euler_poker
 
-A command line tool for choosing winning poker hands, per [problem 54] of
-[Project Euler].
+A command line tool for choosing winning poker hands (and a solution to
+[problem 54] of [Project Euler]).
 
 [problem 54]: https://projecteuler.net/problem=54
 [Project Euler]: https://projecteuler.net
@@ -51,20 +51,20 @@ instructions:
 
 # Architecture
 
-The basic architecture of my solution is as follows:
+The basic architecture of this solution is as follows:
 
 - `EulerPoker::Hand` represents a hand of five cards.
-- There are sublcasses of `EulerPoker::Hand` for each hand type (straight,
+- There is a sublcass of `EulerPoker::Hand` for each hand type (straight,
   flush, three of a kind, etc.)
-- `EulerPoker::Hand` implements [`Comparable`] for comparisons between hands
-  of different types.
-- Each subclasses implements `Comparable` for comparisons between hands of that
-  type.
+- `EulerPoker::Hand` implements [`Comparable`](https://ruby-doc.org/core-2.4.0/Comparable.html)
+  for comparisons between hands of different types.
+- Each subclass then implements `Comparable` for comparisons between hands of
+  that type.
 
 The winner of a round of poker can then be determined by comparing the two hands
 with `<` or `>`.
 
-### Supporting Cast
+### Other Classes
 
 `EulerPoker::Hand` and it's subclasses comprise the core of this solution, but
 there are some other classes which provide support:
@@ -81,8 +81,10 @@ there are some other classes which provide support:
 
 ### Terminology
 
-As you browse the source code, some of the terms may be confusing (perhaps
-_because_ they are the correct terms). So, here are some definitions:
+Where possible, I tried to use the correct terms for a concept. I personally
+found some of these terms a little confusing, though, so here is a list of some
+of the terms you will encounter as you browse through the source code, along
+with a description of what they mean:
 
 - Suit is the suit of a card (spade, heart, diamond, club).
 - Rank is the numeric ranking of a card (numbered cards are their number, Jack
@@ -97,8 +99,8 @@ _because_ they are the correct terms). So, here are some definitions:
 
 - Royal Flush is not implemented because it is just a special case of Straight
   Flush.
-- No validation is taking place (the instructions for [problem 54] state that
-  the file to be parsed can be assumed to be valid). There is a commented out
-  test file (`test/test_hand_validation.rb`) with a first approximation of what
-  should be validated if this were designed to take input which could contain
-  errors.
+- No validation is taking place (the [instructions for problem 54][problem 54]
+  state that the file to be parsed can be assumed to be valid). There is a
+  commented out test file (`test/test_hand_validation.rb`) with a first
+  approximation of what should be validated if this were designed to take input
+  which could contain errors.
