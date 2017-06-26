@@ -35,6 +35,13 @@ Files should conform to the instructions laid out by the problem:
 > Each line of the file contains ten cards (separated by a single space): the
 > first five are Player 1's cards and the last five are Player 2's cards.
 
+So lines in the file should look something like this:
+
+```
+8C TS KC 9H 4S 7D 2S 5D 3S AC
+5C AD 5D AC 9C 7C 5H 8D TD KS
+```
+
 Additionally, euler_poker does not do any validation to ensure that every card
 and hand are valid. Per the instructions:
 
