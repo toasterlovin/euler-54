@@ -42,8 +42,8 @@ So lines in the file should look something like this:
 5C AD 5D AC 9C 7C 5H 8D TD KS
 ```
 
-Additionally, euler_poker does not do any validation to ensure that every card
-and hand are valid. Per the instructions:
+Additionally, euler_poker does not validate that hands are valid. Per the
+instructions:
 
 > You can assume that all hands are valid (no invalid characters or repeated
 > cards), each player's hand is in no specific order, and in each hand there is
@@ -56,24 +56,40 @@ The basic architecture of my solution is as follows:
 - `EulerPoker::Hand` represents a hand of five cards.
 - There are sublcasses of `EulerPoker::Hand` for each hand type (straight,
   flush, three of a kind, etc.)
-- `EulerPoker::Hand` implements `[Comparable]` for comparisons between hands
+- `EulerPoker::Hand` implements [`Comparable`] for comparisons between hands
   of different types.
-- The subclasses representing each hand type implement `Comparable` for
-  comparisons between hands of the same type.
-- Determining the winner of a round of poker then becomes as easy as comparing
-  the hands with `>` or `<`.
+- Each subclasses implements `Comparable` for comparisons between hands of that
+  type.
 
-`EulerPoker::Hand` and it's subclasses are the core of my solution, but there
-are some other classes which provide support:
+The winner of a round of poker can then be determined by comparing the two hands
+with `<` or `>`.
 
-- `EulerPoker::HandFactory` handles taking a string of text representing a hand
-  and instantiating the correct `EulerPoker::Hand` subclass.
+### Supporting Cast
+
+`EulerPoker::Hand` and it's subclasses comprise the core of this solution, but
+there are some other classes which provide support:
+
+- `EulerPoker::HandFactory` takes a string of text representing a hand of cards
+  and instantiates the corresponding subclass of `EulerPoker::Hand`.
 - `EulerPoker::Card` represents a single card and is primarily concerned with
-  translating cards (namely face cards) into a numeric rank for comparison.
-- `EulerPoker::Round` (as in a round of poker) represents a pair of hands and a
-  method for returning the winner.
-- `EulerPoker::CLI` contains the logic for reading the contents of a file and
-  using `EulerPoker::Round` to determine how many rounds were won by Player 1.
+  enabling comparison of a card's rank. This is mainly an issue because of face
+  cards, which need to be translated into a numeric ranking.
+- `EulerPoker::Round` (as in a round of poker) represents a pair of hands which
+  will be compared to determine the winner.
+- `EulerPoker::CLI` contains the logic for actually reading the contents of a
+  file and determining how many rounds were won by Player 1.
+
+### Terminology
+
+As you browse the source code, some of the terms may be confusing (perhaps
+_because_ they are the correct terms). So, here are some definitions:
+
+- Suit is the suit of a card (spade, heart, diamond, club).
+- Rank is the numeric ranking of a card (numbered cards are their number, Jack
+  is 11, Queen is 12, King is 13, Ace, is 14).
+- Ranking is the ranking of the hand type (straight, flush, etc.) in relation
+  to other hand types.
+- Round is a pair of hands (as in a round of poker).
 
 [Comparable]: https://ruby-doc.org/core-2.4.0/Comparable.html
 
