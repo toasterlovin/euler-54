@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name        = 'euler_poker'
-  s.version     = '0.0.1'
+  s.version     = '0.0.2'
   s.license    = 'MIT'
   s.summary     = 'Euler Poker'
   s.description = 'A solution to problem 54 of Project Euler'
