@@ -53,13 +53,12 @@ instructions:
 
 The basic architecture of this solution is as follows:
 
-- `EulerPoker::Hand` represents a hand of five cards.
-- There is a sublcass of `EulerPoker::Hand` for each hand type (straight,
-  flush, three of a kind, etc.)
-- `EulerPoker::Hand` implements [`Comparable`](https://ruby-doc.org/core-2.4.0/Comparable.html)
-  for comparisons between hands of different types.
-- Each subclass then implements `Comparable` for comparisons between hands of
-  that type.
+- There is a class for each hand type (straight, flush, three of a kind, etc.).
+  Each of these classes includes `EulerPoker::Handable`.
+- `EulerPoker::Handable` implements [`Comparable`](https://ruby-doc.org/core-2.4.0/Comparable.html)
+  and knows how to perform comparisons between hands of different types.
+- Each class that includes `EulerPoker::Handable` then has a method that knows
+  how to do a comparison with other hands of that type.
 
 The winner of a round of poker can then be determined by comparing the two hands
 with `<` or `>`.
