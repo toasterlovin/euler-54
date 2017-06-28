@@ -1,5 +1,7 @@
 module EulerPoker
-  class FullHouse < Hand
+  class FullHouse
+    include Handable
+
     def instance_comparison(other)
       if triplet_rank == other.triplet_rank
         return pair_rank <=> other.pair_rank

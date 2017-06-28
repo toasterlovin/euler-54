@@ -1,5 +1,7 @@
 module EulerPoker
-  class HighCard < Hand
+  class HighCard
+    include Handable
+
     def instance_comparison(other)
       descending_ranks <=> other.descending_ranks
     end

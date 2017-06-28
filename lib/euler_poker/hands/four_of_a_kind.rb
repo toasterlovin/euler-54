@@ -1,5 +1,7 @@
 module EulerPoker
-  class FourOfAKind < Hand
+  class FourOfAKind
+    include Handable
+
     def instance_comparison(other)
       return quartet_rank <=> other.quartet_rank
     end

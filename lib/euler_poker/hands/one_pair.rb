@@ -1,5 +1,7 @@
 module EulerPoker
-  class OnePair < Hand
+  class OnePair
+    include Handable
+
     def instance_comparison(other)
       if pair_rank != other.pair_rank
         pair_rank <=> other.pair_rank
