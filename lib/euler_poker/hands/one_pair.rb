@@ -1,8 +1,6 @@
 module EulerPoker
   class OnePair < Hand
-    def <=>(other)
-      return super unless super == 0
-
+    def instance_comparison(other)
       if pair_rank != other.pair_rank
         pair_rank <=> other.pair_rank
       else

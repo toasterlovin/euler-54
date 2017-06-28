@@ -1,8 +1,6 @@
 module EulerPoker
   class Flush < Hand
-    def <=>(other)
-      return super unless super == 0
-
+    def instance_comparison(other)
       descending_ranks <=> other.descending_ranks
     end
 

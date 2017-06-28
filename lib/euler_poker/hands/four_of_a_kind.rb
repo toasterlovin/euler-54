@@ -1,8 +1,6 @@
 module EulerPoker
   class FourOfAKind < Hand
-    def <=>(other)
-      return super unless super == 0
-
+    def instance_comparison(other)
       return quartet_rank <=> other.quartet_rank
     end
 

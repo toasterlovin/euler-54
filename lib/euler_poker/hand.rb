@@ -7,11 +7,18 @@ module EulerPoker
     end
 
     def <=>(other)
-      ranking <=> other.ranking
+      class_result = class_comparison(other)
+      return class_result unless class_result == 0
+
+      return instance_comparison(other)
     end
 
     def ranking
       RANKED_HANDS.reverse.index(self.class)
+    end
+
+    def class_comparison(other)
+      ranking <=> other.ranking
     end
 
     def ranks

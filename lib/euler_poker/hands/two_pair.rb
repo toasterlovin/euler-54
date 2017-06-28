@@ -1,8 +1,6 @@
 module EulerPoker
   class TwoPair < Hand
-    def <=>(other)
-      return super unless super == 0
-
+    def instance_comparison(other)
       if high_pair_rank != other.high_pair_rank
         high_pair_rank <=> other.high_pair_rank
       elsif low_pair_rank != other.low_pair_rank

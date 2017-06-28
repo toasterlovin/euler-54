@@ -1,8 +1,6 @@
 module EulerPoker
   class ThreeOfAKind < Hand
-    def <=>(other)
-      return super unless super == 0
-
+    def instance_comparison(other)
       if triplet_rank == other.triplet_rank
         return ranked_extra_cards <=> other.ranked_extra_cards
       else

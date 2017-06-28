@@ -1,8 +1,6 @@
 module EulerPoker
   class StraightFlush < Hand
-    def <=>(other)
-      return super unless super == 0
-
+    def instance_comparison(other)
       return ranks.max <=> other.ranks.max
     end
 
